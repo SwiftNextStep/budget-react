@@ -7,6 +7,7 @@ import EntryLines from './components/EntryLines';
 import MainHeader from './components/MainHeader';
 import ModalEdit from './components/ModalEdit';
 import NewEntryForm from './components/NewEntryForm';
+import { createStore } from 'redux';
 
 function App() {
   const [entries, setEntries] = useState(initialEntries);
@@ -44,7 +45,40 @@ function App() {
     setExpenseTotal(totalExpenses);
     setIncomeTotal(totalIncomes);
   }, [entries]);
+  ///
+  const store = createStore((state = initialEntries, action) => {
+    console.log(action);
+    let newEntries;
+    switch (action.type) {
+      case 'ADD_ENTRY':
+        newEntries = entries.concat({ ...action.payload });
+        return newEntries;
+      case 'REMOVE_ENTRY':
+        newEntries = entries.filter((entry) => entry.id !== action.payload.id);
+        return newEntries;
+      default:
+        return state;
+    }
+  });
+  store.subscribe(() => {
+    console.log('store: ', store.getState());
+  });
 
+  const payload_add = {
+    id: 5,
+    description: 'Hello from Redux!',
+    value: 999,
+    isExpense: true,
+  };
+
+  const payload_remove = {
+    id: 1,
+  };
+
+  store.dispatch({ type: 'ADD_ENTRY', payload: payload_add });
+  store.dispatch({ type: 'REMOVE_ENTRY', payload: payload_remove });
+
+  ///
   //const deleteEntry = (id) => {}
   function deleteEntry(id) {
     const result = entries.filter((entry) => entry.id !== id);

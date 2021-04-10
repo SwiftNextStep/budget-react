@@ -2,11 +2,11 @@
   "entries": [
     {
       "id": 1,
-      "description": "Work income"
+      "description": "Income Rent"
     },
     {
       "id": 2,
-      "description": "Water Bill"
+      "description": "Power Water"
     },
     {
       "id": 3,
@@ -15,6 +15,14 @@
     {
       "id": 4,
       "description": "Power bill"
+    },
+    {
+      "id": "e8805fe8-d9c3-4c8f-8e17-1cfbf33dee1e",
+      "description": "This entry should show now"
+    },
+    {
+      "id": "e615d0f7-d83b-4153-a1e2-b4329f1c5c3b",
+      "description": "Another entry to show now"
     }
   ],
   "values": [
@@ -37,6 +45,16 @@
       "id": 4,
       "value": 50,
       "isExpense": true
+    },
+    {
+      "id": "e8805fe8-d9c3-4c8f-8e17-1cfbf33dee1e",
+      "isExpense": true,
+      "value": "1000"
+    },
+    {
+      "id": "e615d0f7-d83b-4153-a1e2-b4329f1c5c3b",
+      "isExpense": true,
+      "value": "10"
     }
   ]
 }
